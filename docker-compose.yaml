@@ -18,7 +18,13 @@ services:
     image: joindevops/cart:1.0.0
     container_name: cart
     depends_on:
-      - redis    
+      - redis  
+  shipping:
+    build: ./shipping
+    image: joindevops/shipping:1.0.0
+    container_name: shipping
+    depends_on:
+      - mysql      
   frontend:
     build: ./frontend
     image: joindevops/frontend:1.0.0
@@ -27,6 +33,7 @@ services:
       - catalogue
       - user
       - cart
+      - shipping
     ports:
       - "80:80"      
   mongodb:
