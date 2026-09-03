@@ -6,14 +6,15 @@ services:
     container_name: catalogue
     depends_on:
       - mongodb
+
   mongodb:
-  build:
-    dockerfile: mongodb.Dockerfile
-  image: joindevops/mongodb:1.0.0
-  container_name: mongodb
+    build:
+      dockerfile: mongodb.Dockerfile
+    image: joindevops/mongodb:1.0.0
+    container_name: mongodb
 
 networks:
   default:
     driver: bridge
     name: roboshop
-    external: false # if true, you need to create the network manually before running docker-compose up
+    external: false
