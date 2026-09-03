@@ -1,7 +1,6 @@
 services:
   catalogue:
     build:
-      context: .
       dockerfile: catalogue.Dockerfile
     image: joindevops/catalogue:1.0.0
     container_name: catalogue
@@ -11,16 +10,13 @@ services:
       - "8080:8080"  
   user:
     build:
-      context: .
       dockerfile: user.Dockerfile
     image: joindevops/user:1.0.0
     container_name: user
     depends_on:
       - redis
   frontend:
-    build:
-      context: .
-      dockerfile: frontend.Dockerfile
+    build: ./frontend
     image: joindevops/frontend:1.0.0
     container_name: frontend
     depends_on:
@@ -30,7 +26,6 @@ services:
       - "80:80"      
   mongodb:
     build:
-      context: .
       dockerfile: mongodb.Dockerfile
     image: joindevops/mongodb:1.0.0
     container_name: mongodb
