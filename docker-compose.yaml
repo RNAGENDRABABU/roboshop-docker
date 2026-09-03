@@ -31,7 +31,6 @@ services:
     image: joindevops/mongodb:1.0.0
     container_name: mongodb
   redis:
-    build:
       image: redis:7.0
       container_name: redis
 
