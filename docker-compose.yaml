@@ -6,8 +6,6 @@ services:
     container_name: catalogue
     depends_on:
       - mongodb
-    networks:
-      - default
   mongodb:
   build:
     dockerfile: mongodb.Dockerfile
