@@ -1,7 +1,7 @@
 services:
   catalogue:
     build: ./catalogue
-    image: joindevops/catalogue:1.0.0
+    image: rasamsetti/catalogue:1.0.0
     container_name: catalogue
     depends_on:
       - mongodb
@@ -9,28 +9,28 @@ services:
       - "8080:8080"  
   user:
     build: ./user
-    image: joindevops/user:1.0.0
+    image: rasamsetti/user:1.0.0
     container_name: user
     depends_on:
       - redis
       - mongodb
   cart:
     build: ./cart
-    image: joindevops/cart:1.0.0
+    image: rasamsetti/cart:1.0.0
     container_name: cart
     depends_on:
       - redis  
       - catalogue
   shipping:
     build: ./shipping
-    image: joindevops/shipping:1.0.0
+    image: rasamsetti/shipping:1.0.0
     container_name: shipping
     depends_on:
       - mysql
       - cart
   payment:
     build: ./payment
-    image: joindevops/payment:1.0.0
+    image: rasamsetti/payment:1.0.0
     container_name: payment
     environment:
        CART_HOST: "cart"
@@ -46,7 +46,7 @@ services:
       - user        
   frontend:
     build: ./frontend
-    image: joindevops/frontend:1.0.0
+    image: rasamsetti/frontend:1.0.0
     container_name: frontend
     depends_on:
       - catalogue
@@ -58,14 +58,14 @@ services:
       - "80:80"      
   mongodb:
     build: ./mongodb
-    image: joindevops/mongodb:1.0.0
+    image: rasamsetti/mongodb:1.0.0
     container_name: mongodb
   redis:
       image: redis:7.0
       container_name: redis
   mysql:
     build: ./mysql
-    image: joindevops/mysql:1.0.0
+    image: rasamsetti/mysql:1.0.0
     container_name: mysql 
   rabbitmq:
     image: rabbitmq:3
